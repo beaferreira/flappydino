@@ -54,7 +54,7 @@ class Dino(pygame.sprite.Sprite):
 
         self.speed += GRAVITY
 
-        # Update height
+        # altura
         self.rect[1] += self.speed
     
     def bump(self):
@@ -160,17 +160,7 @@ def mostrar_pontos():
     screen.blit(pontos_texto, (10, 10))
 
 def show_game_over_screen():
-    score_text = font.render(f"Pontuação final: {pontos}", True, BLACK)
-    screen.blit(score_text, (SCREEN_WIDTH // 2 - score_text.get_width() // 2, SCREEN_HEIGHT // 2 + restart_text.get_height() // 2))
-    font = pygame.font.Font(pygame.font.get_default_font(), 20)
-    screen.fill(BLUE)
-    game_over_text = font.render("Voce perdeu :(", True, BLACK)
-    restart_text = font.render("Aperte qualquer tecla para comecar!", True, BLACK)
-    screen.blit(game_over_text, (SCREEN_WIDTH // 2 - game_over_text.get_width() // 2, SCREEN_HEIGHT // 3 - game_over_text.get_height() // 2))
-    screen.blit(restart_text, (SCREEN_WIDTH // 2 - restart_text.get_width() // 2, SCREEN_HEIGHT // 2 - restart_text.get_height() // 2))
-    pygame.display.flip()
-
-
+    print("Game over")
     waiting = True
     while waiting:
         for event in pygame.event.get():
@@ -179,6 +169,17 @@ def show_game_over_screen():
                 exit()
             if event.type == pygame.KEYUP:
                 waiting = False
+        score_text = font.render(f"Pontuação final: {pontos}", True, BLACK)
+        screen.blit(score_text, (SCREEN_WIDTH // 2 - score_text.get_width() // 2, SCREEN_HEIGHT // 2 + restart_text.get_height() // 2))
+        font = pygame.font.Font(pygame.font.get_default_font(), 20)
+        screen.fill(BLUE)
+        game_over_text = font.render("Voce perdeu :(", True, BLACK)
+        restart_text = font.render("Aperte qualquer tecla para comecar!", True, BLACK)
+        screen.blit(game_over_text, (SCREEN_WIDTH // 2 - game_over_text.get_width() // 2, SCREEN_HEIGHT // 3 - game_over_text.get_height() // 2))
+        screen.blit(restart_text, (SCREEN_WIDTH // 2 - restart_text.get_width() // 2, SCREEN_HEIGHT // 2 - restart_text.get_height() // 2))
+        pygame.display.flip()
+
+
 
 show_start_screen()
 
